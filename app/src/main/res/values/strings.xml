@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SimWechat</string>
+    <string name="bottom_bar_text_1">微信</string>
+    <string name="bottom_bar_text_2">通讯录</string>
+    <string name="bottom_bar_text_3">发现</string>
+    <string name="bottom_bar_text_4">我</string>
+
+</resources>
