@@ -13,7 +13,7 @@ import royluo.simwechat.fragment.MainInCenterFragment_3;
 import royluo.simwechat.fragment.MainInCenterFragment_4;
 
 public class WechatActivity extends AppCompatActivity implements MainInCenterFragment_1.OnNotify,MainInCenterFragment_2.OnNotify,
-        MainInCenterFragment_3.OnNotify,MainInCenterFragment_4.OnNotify{
+        MainInCenterFragment_3.OnNotify,MainInCenterFragment_4.OnNotify,BottomBarFragment.NotifyChanges{
 
     private static final String TAG="WechatActivity";
 
@@ -22,6 +22,7 @@ public class WechatActivity extends AppCompatActivity implements MainInCenterFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wechat);
 
+        //托管fragment
         FragmentManager fragmentManager=getSupportFragmentManager();
         Fragment fragment=fragmentManager.findFragmentById(R.id.main_in_center_container);
         if (fragment==null){
@@ -50,4 +51,20 @@ public class WechatActivity extends AppCompatActivity implements MainInCenterFra
         }
     }
 
+    //监听BottomBar选项变化
+    @Override
+    public void itemHasChanged(int itemPosition) {
+        switch (itemPosition){
+
+            case BottomBarFragment.FIRST_ITEM:
+                break;
+            case BottomBarFragment.SECOND_ITEM:
+                break;
+            case BottomBarFragment.THIRD_ITEM:
+                break;
+            case BottomBarFragment.FOURTH_ITEM:
+                break;
+
+        }
+    }
 }

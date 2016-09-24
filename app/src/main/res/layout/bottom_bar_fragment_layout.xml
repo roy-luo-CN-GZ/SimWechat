@@ -7,6 +7,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/item_1_bottom_bar"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -36,6 +37,7 @@
 
 
     <LinearLayout
+        android:id="@+id/item_2_bottom_bar"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -64,6 +66,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/item_3_bottom_bar"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -92,6 +95,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/item_4_bottom_bar"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
