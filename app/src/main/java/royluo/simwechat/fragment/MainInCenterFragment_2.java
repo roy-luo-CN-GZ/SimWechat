@@ -26,12 +26,6 @@ public class MainInCenterFragment_2 extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.main_in_center_fragment_layout_2,container,false);
 
-        //用接口通知Activity此Fragment已加载
-        if (getActivity() instanceof OnNotify){
-            ((OnNotify) getActivity()).fragmentCreated(TAG);
-        }else {
-            throw new ClassCastException("托管MainInCenterFragment_2的Activity必须实现此Fragment中的OnNotify接口");
-        }
 
         return view;
     }

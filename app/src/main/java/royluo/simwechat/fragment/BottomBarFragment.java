@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,15 +44,20 @@ public class BottomBarFragment extends Fragment implements View.OnTouchListener{
     //现在被选择的ITEM 默认为0即显示第一项
     private int currSelectedItem=FIRST_ITEM;
 
+    public static BottomBarFragment bottomBarFragment;
+
     public static BottomBarFragment newInstance(){
         return new BottomBarFragment();
     }
 
+    public static BottomBarFragment getInstance(){
+        return bottomBarFragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        bottomBarFragment=this;
         View view=inflater.inflate(R.layout.bottom_bar_fragment_layout,container,false);
         view.setOnTouchListener(this);
         //初始化数据
@@ -114,23 +120,33 @@ public class BottomBarFragment extends Fragment implements View.OnTouchListener{
 
     //通知有item被选择,执行相关操作
     private void itemChange(){
+
+        //判断是否刚初始化
         if (prevSelectedItem!=-1){
             ViewHolder unSelectedViewHolder=viewHolders.get(prevSelectedItem);
             unSelectedViewHolder.getmImageView().setImageResource(icUnselectedId.get(prevSelectedItem));
             unSelectedViewHolder.getmTextView().setTextColor(ContextCompat.getColor(getActivity(),R.color.grayLight));
+
+            //通知activity item选择有变化
+            if (getActivity() instanceof NotifyChanges){
+                ((NotifyChanges)getActivity()).itemInBottomHasChanged(currSelectedItem);
+            }else {
+                throw new ClassCastException("Activity必须实现NotifyChanges接口才可以监听到Item选择的变化");
+            }
+
         }
         ViewHolder selectedViewHolder=viewHolders.get(currSelectedItem);
         selectedViewHolder.getmImageView().setImageResource(icSelectedId.get(currSelectedItem));
         selectedViewHolder.getmTextView().setTextColor(ContextCompat.getColor(getActivity(),R.color.greenDark));
 
-        if (getActivity() instanceof NotifyChanges){
-            ((NotifyChanges)getActivity()).itemHasChanged(currSelectedItem);
-        }else {
-            throw new ClassCastException("Activity必须实现NotifyChanges接口才可以监听到Item选择的变化");
-        }
-
     }
 
+    //提供给Activity改变item的方法
+    public void changeItem(int itemPostion){
+        prevSelectedItem=currSelectedItem;
+        currSelectedItem=itemPostion;
+        itemChange();
+    }
 
     //记录按下时item位置 -1表示从DOWN到MOVE到UP过程中item超出范围
     private int itemPostion =-1;
@@ -207,7 +223,7 @@ public class BottomBarFragment extends Fragment implements View.OnTouchListener{
 
     //给ACTIVITY的接口,通知变化
     public interface NotifyChanges {
-        void itemHasChanged(int itemPosition);
+        void itemInBottomHasChanged(int itemPosition);
     }
 
 }

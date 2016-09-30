@@ -3,8 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="royluo.simwechat.activity.WechatActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_in_wechat"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_title_bar_height"
+        android:background="?attr/colorPrimary"
+        app:title="@string/wechat_toolbar_title"
+        app:titleTextAppearance="@style/toolbar_text_style"></android.support.v7.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/main_in_center_container"

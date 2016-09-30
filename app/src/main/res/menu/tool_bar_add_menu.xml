@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            android:id="@+id/menu_item_1_toolbar_add"
+            android:icon="@mipmap/ic_launcher"
+            android:title="发起群聊"
+            android:alphabeticShortcut="@string/app_name"
+            />
+
+        <item
+            android:id="@+id/menu_item_2_toolbar_add"
+            android:icon="@mipmap/ic_launcher"
+            android:title="添加新联系人"
+            app:showAsAction="collapseActionView"
+            />
+
+</menu>

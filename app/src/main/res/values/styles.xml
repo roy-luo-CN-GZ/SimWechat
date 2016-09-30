@@ -1,11 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LightTheme" parent="Widget.AppCompat.Light.PopupMenu"/>
+
+    <style name="DarkTheme" parent="Widget.AppCompat.PopupMenu"/>
+
+    <style name="toolbar_text_style">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/whiteBackground</item>
+    </style>
+
+    <style name="PopMenu">
+        <item name="android:popupBackground">@color/greenDark</item>
+        <item name="android:dropDownWidth">100dp</item>
+    </style>
+        
+    
+    
 </resources>
